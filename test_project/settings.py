@@ -4,8 +4,6 @@ import os.path
 
 from os.path import join, abspath, dirname
 PROJECT_ROOT = abspath(dirname(__file__))
-PROJECT_ROOT = PROJECT_ROOT.replace('social_bookmarking/test_project','')
-
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -17,7 +15,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'dev.db'             # Or path to database file if using sqlite3.
+DATABASE_NAME = join(PROJECT_ROOT, 'dev.db')             # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -42,7 +40,8 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = PROJECT_ROOT + '/media/'
+MEDIA_ROOT = abspath(join(PROJECT_ROOT, "..", "social_bookmarking", 'media'))
+assert os.path.exists(MEDIA_ROOT)
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).

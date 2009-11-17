@@ -1,0 +1,30 @@
+{% load social_bookmarking_tags %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+    <head>
+        <title>Django Social Bookmarking Test</title>
+    </head>
+    <body>
+        {% block body%}
+        <h1>
+            Django Social Bookmarking Test
+        </h1>
+
+        <dl>
+            <dt>request.path</dt>
+            <dd>{% show_bookmarks "my page" request.path %}</dd>
+
+            <dt>/</dt>
+            <dd>{% show_bookmarks "my page" "/" %}</dd>
+
+            <dt>/path/to/something</dt>
+            <dd>{% show_bookmarks "my page" "/path/to/something" %}</dd>
+
+            <dt>http://www.google.com/</dt>
+            <dd>{% show_bookmarks "my page" "http://www.google.com/" %}</dd>
+        </dl>
+
+
+        {% endblock %}
+    </body>
+</html>
